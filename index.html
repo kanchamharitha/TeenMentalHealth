@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Teen Mental Health Prediction</title>
+
+<style>
+
+body{
+background:#f2f2f2;
+font-family:Arial;
+}
+
+.container{
+
+width:500px;
+margin:auto;
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+
+}
+
+input,select{
+
+width:100%;
+padding:10px;
+margin-top:10px;
+margin-bottom:15px;
+
+}
+
+button{
+
+width:100%;
+padding:12px;
+background:green;
+color:white;
+font-size:18px;
+border:none;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:darkgreen;
+
+}
+
+h2{
+
+text-align:center;
+
+}
+
+.result{
+
+text-align:center;
+font-size:22px;
+color:red;
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Teen Mental Health Prediction</h2>
+
+<form action="/predict" method="POST">
+
+<label>Age</label>
+<input type="number" name="age" required>
+
+<label>Gender</label>
+
+<select name="gender">
+
+<option value="0">Male</option>
+<option value="1">Female</option>
+
+</select>
+
+<label>Daily Social Media Hours</label>
+<input type="number" step="0.1" name="social_media" required>
+
+<label>Sleep Hours</label>
+<input type="number" step="0.1" name="sleep" required>
+
+<label>Screen Time Before Sleep</label>
+<input type="number" step="0.1" name="screen" required>
+
+<label>Academic Performance</label>
+<input type="number" step="0.1" name="academic" required>
+
+<label>Physical Activity</label>
+<input type="number" step="0.1" name="physical" required>
+
+<label>Stress Level</label>
+<input type="number" name="stress" min="1" max="10" required>
+
+<label>Anxiety Level</label>
+<input type="number" name="anxiety" min="1" max="10" required>
+
+<label>Addiction Level</label>
+<input type="number" name="addiction" min="1" max="10" required>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if prediction_text %}
+
+<div class="result">
+
+{{ prediction_text }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

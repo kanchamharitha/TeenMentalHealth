@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Teen Mental Health Prediction</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4F46E5,#06B6D4);
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:550px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#1E293B;
+    margin-bottom:25px;
+    font-size:30px;
+    font-weight:700;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#334155;
+}
+
+input,
+select{
+    width:100%;
+    padding:14px;
+    margin-bottom:18px;
+    border:2px solid #E2E8F0;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+    background:#F8FAFC;
+}
+
+input:focus,
+select:focus{
+    border-color:#4F46E5;
+    background:#FFFFFF;
+    box-shadow:0 0 8px rgba(79,70,229,.3);
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#4F46E5,#06B6D4);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(79,70,229,.4);
+}
+
+.result{
+    margin-top:25px;
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+    font-weight:700;
+    border-radius:12px;
+    background:#EEF2FF;
+    color:#4338CA;
+    border-left:6px solid #4F46E5;
+}
+
+@media(max-width:600px){
+    .container{
+        padding:25px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Teen Mental Health Prediction</h2>
+
+<form action="/predict" method="POST">
+
+<label>Age</label>
+<input type="number" name="age" required>
+
+<label>Gender</label>
+
+<select name="gender">
+
+<option value="0">Male</option>
+<option value="1">Female</option>
+
+</select>
+
+<label>Daily Social Media Hours</label>
+<input type="number" step="0.1" name="social_media" required>
+
+<label>Sleep Hours</label>
+<input type="number" step="0.1" name="sleep" required>
+
+<label>Screen Time Before Sleep</label>
+<input type="number" step="0.1" name="screen" required>
+
+<label>Academic Performance</label>
+<input type="number" step="0.1" name="academic" required>
+
+<label>Physical Activity</label>
+<input type="number" step="0.1" name="physical" required>
+
+<label>Stress Level</label>
+<input type="number" name="stress" min="1" max="10" required>
+
+<label>Anxiety Level</label>
+<input type="number" name="anxiety" min="1" max="10" required>
+
+<label>Addiction Level</label>
+<input type="number" name="addiction" min="1" max="10" required>
+<label>Platform Usage</label>
+<select name="platform" required>
+    <option value="0">Instagram</option>
+    <option value="1">Facebook</option>
+    <option value="2">WhatsApp</option>
+    <option value="3">YouTube</option>
+    <option value="4">Twitter/X</option>
+    <option value="5">Snapchat</option>
+</select>
+
+<br><br>
+<label>Social Interaction Level</label>
+<select name="social_interaction" required>
+    <option value="0">Low</option>
+    <option value="1">Medium</option>
+    <option value="2">High</option>
+</select>
+
+<br><br>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if prediction_text %}
+
+<div class="result">
+
+{{ prediction_text }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
